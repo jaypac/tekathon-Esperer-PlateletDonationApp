@@ -7,11 +7,13 @@
 /cobertura.ser
 .DS_Store
 /target/
+/user_guide/
 
 ### Eclipse files
 .project
 .classpath
 .settings
+.buildpath
 
 ### IDEA Files
 .idea/
