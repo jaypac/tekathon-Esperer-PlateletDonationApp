@@ -7,13 +7,7 @@
 <body>
 
 <div id="container">
-	<?php 
-		if($results = 1) {
-	?>
-		<h1>Response Sent!</h1>
-	<?php 
-		}
-	?>
+	<h1><?php echo $results ?>!</h1>
 </div>
 
 </body>

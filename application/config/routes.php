@@ -58,6 +58,11 @@ $route['pda/register/(:any)'] = 'registration_controller/$1';
 //SMS
 $route['pda/sms/(:any)'] = 'sms_controller/$1';
 
+//Dashboard
+$route['pda/dashboard'] = 'dashboard_controller/index';
+
+
+
 //PUBLIC
 $route['pda/(:any)'] = 'public_controller/$1';
 	

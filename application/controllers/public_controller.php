@@ -19,12 +19,89 @@ class Public_controller extends MY_Controller {
 
     
     public function login(){
-    	echo 'Awesome';
+    	
+     	$data=array();
+    	$this->add_view("content_body","Login", $data);
     	
     	//$this->add_view("content_body", "login", $data);
-    	//$this->render("login");
+    	$this->render("default");
     	
     }
+    
 
+    public function donorRegisration(){
+    	 
+    	$data=array();
+    	$this->add_view("content_body","registration", $data);
+    	 
+    	//$this->add_view("content_body", "login", $data);
+    	$this->render("default");
+    	 
+    }
+    
+    public function loginSuccessful(){
+    	 
+
+    	$data=array();
+    	$this->load->model('donor_model','login');
+    	 
+    	$data['query'] = $this->login->loginSuccessful();
+    	
+    	if ($data['query']->num_rows() > 0)
+    	{
+    		foreach ($data['query']->result() as $row)
+    		{
+    			//echo 'Welcome ';
+    			//echo $row->UserLoginName;
+    			$this->add_view("content_body","dashboardList", $data['query']);
+    			$this->session->set_userdata('CONST_SESSION', $row->Id);
+    			    
+    		}
+    	}
+    	else {
+    		echo 'not found';
+    	}
+    	//$this->session->set_userdata(CONST_SESSION_CO_ID, $co_id);
+    	    	
+    	//$this->add_view("content_body", "login", $data);
+    	$this->render("admin/default");
+    	 
+    }
+    
+	public function save(){
+		$data=array();	 
+		$this->load->model('donor_model');
+		
+		$this->donor_model->savedonorDetails();
+		$this->donor_model->saveuserlogin();
+		
+		$this->add_view("content_body","regComplete",$data);
+		$this->render("default");
+	}
+	
+	
+	public function savehospital(){
+		$data=
+	
+		array();
+		$this->
+	
+		load->model('donor_model');
+		$this->
+	
+		donor_model->savehospdetails();
+		$this->
+	
+		donor_model->saveuserlogin();
+		$this->add_view(
+	
+				"content_body","regComplete",$data);
+		$this->render(
+	
+				"default");
+	}
+
+	
 }
+
 

@@ -20,7 +20,7 @@ class Admin_Controller extends MY_Controller {
         parent::__construct();
 
         //Always first authenticate
-        //$this->session_auth();
+        $this->session_auth();
     }
 
     function render($layout = "admin/default") {
@@ -52,7 +52,7 @@ class Admin_Controller extends MY_Controller {
      * Check if session is active
      */
     function session_auth() {
-        $user_id = $this->session->userdata(CONST_SESSION_USER_ID);
+        $user_id = $this->session->userdata('CONST_SESSION');
 
         if (!(isset($user_id) && !empty($user_id))) {
             $this->session->sess_destroy();
