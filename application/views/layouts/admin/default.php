@@ -1,66 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
 <head>
-	 <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Foundation Template | Banded</title>
+<link rel="stylesheet" href="/css/foundation.css">
+
+<!-- Final CSS -->
+<!--
+<link rel="stylesheet" href="/css/app.css">
+-->
+
+<link rel="stylesheet" href="/css/app/base.css">
+<link rel="stylesheet" href="/css/app/login.css">
+
+<script src="/js/vendor/modernizr.js"></script>
 
 </head>
 <body>
+	<div class="row">
+		<div class="large-12 columns">
+			<h1>Top Bar</h1>
+		</div>	
+	</div>	
 
-	<!-- 
-	<div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="/pda/ngo/newRequest">New Request</a></li>
-              <li><a href="#">History</a></li>
-            </ul>
-          </div>
-          
-      -->     
-      
-      	<style>
-      		nav#myNav a{
-	
-			color:white;
-			}
-	
-      	
-      	</style>
-      
-          
-            <nav id="myNav" class="navbar navbar-fixed-top" style="background-color: #4D4D4D">
-		      <div class="container">
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand" href="#"></a>
-		        </div>
-		        <div id="navbar" class="collapse navbar-collapse">
-		          <ul class="nav navbar-nav">
-		            <li style="color:white"><a href="/pda/loginSuccessful">Home</a></li>
-		            <li style="color:white"><a href="/pda/ngo/newRequest">New Request</a></li>
-		            <li style="color:white"><a href="#">History</a></li>
-		          </ul>
-		        </div><!--/.nav-collapse -->
-		      </div>
-		    </nav>
-
-		    
-	<div style="padding-top: 20px;" />	    
-		    
-	<div class="container-fluid">
-			<!--Body Content -->
-             <?php  if(isset($content_body))echo $content_body; ?>
+	<div class="row">
+		<div class="large-3 columns">
+			<ul class="side-nav" role="navigation" title="Link List">
+			   <li role="menuitem"><a href="#">Link 1</a></li>
+			   <li role="menuitem"><a href="/pda/ngo/newRequest">New Request</a></li>
+			   <li role="menuitem"><a href="#">Link 3</a></li>
+			   <li role="menuitem"><a href="#">Link 4</a></li>
+			 </ul>
+		</div>	
+		<div class="large-9 columns">
+			<div class="panel">
+				<!--Body Content -->
+        		<?php  if(isset($content_body))echo $content_body; ?>
+			</div>
+		</div>
+	</div>	
         
-        </div>
-        
-        
-         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/vendor/jquery.js"></script>
+	<script src="/js/foundation.min.js"></script>
+	<script>
+    	$(document).foundation();
+  </script>
 </body>
 </html>
