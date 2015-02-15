@@ -46,8 +46,8 @@ $route['errors/(:any)'] = 'errors/$1';
 
 //ADMIN
 $route['pda/donor/(:any)'] = 'admin/donor_controller/$1';
-$route['pda/hospital/(:any)'] = 'admin/hospital_controller/$1';
 $route['pda/ngo/(:any)'] = 'admin/ngo_controller/$1';
+$route['pda/admin/(:any)'] = 'admin/admin_controller/$1';
 
 //AJAX
 $route['pda/ajax/(:any)'] = 'ajax_controller/$1';
@@ -57,10 +57,6 @@ $route['pda/register/(:any)'] = 'registration_controller/$1';
 
 //SMS
 $route['pda/sms/(:any)'] = 'sms_controller/$1';
-
-//Dashboard
-$route['pda/dashboard'] = 'dashboard_controller/index';
-
 
 
 //PUBLIC

@@ -23,6 +23,41 @@ class User_model extends CI_Model {
 		}else{
 			return false;
 		}
+	}
+
+
+	function init_session($email, $password){
+
+		$result = array();
+
+		$this->load->database();
+
+		$params = array($email , $password);
+		$sql = "SELECT Id,Type FROM userlogin where UserLoginName = ? and Password =?";
+		$query = $this->db->query($sql, $params);
+
+		$row = $query->row_array();
+		$user_type =  $row['Type'];
+		$user_id =  $row['Id'];
+
+		$this->session->set_userdata(CONST_SESSION_USER_ID, $user_id);
+        $this->session->set_userdata(CONST_SESSION_USER_TYPE, $user_type);
+
+		switch ($user_type) {
+            case CONST_USER_TYPE_ADMIN:
+                $result['route'] = 'pda/admin/dashboard';
+                break;
+
+            case CONST_USER_TYPE_NGO:
+                $result['route'] = 'pda/ngo/dashboard';
+                break;
+
+            case CONST_USER_TYPE_DONOR:
+                $result['route'] = 'pda/donor/dashboard';
+                break;
+        }
+
+        return $result;
 	}	
 	
 	

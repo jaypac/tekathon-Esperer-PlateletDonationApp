@@ -42,11 +42,15 @@ class Public_controller extends MY_Controller {
             }
             else
             {
-                //$this->load->view('formsuccess');
-                echo "good";
+                //Initalize session and navigate to dashboard
+                $email = $this->input->post('email');
+                $password = $this->input->post('password');
+
+                $this->load->model('user_model','user');
+                $result = $this->user->init_session($email, $password);
+
+                redirect($result['route'], 'refresh');
             }
-
-
         }else{
 
              redirect('/pda/login/', 'refresh');

@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `donordetails` (
   `PositiveDonationRatio` decimal(10,0) NOT NULL,
   `ActualDonationRation` decimal(10,0) NOT NULL,
   `MobileNumber` varchar(1024) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Donor details';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Donor details';
 
 -- --------------------------------------------------------
 
@@ -70,18 +70,6 @@ CREATE TABLE IF NOT EXISTS `postcodelookup` (
   `latitude` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `longitude` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `postcodelookup2`
---
-
-CREATE TABLE IF NOT EXISTS `postcodelookup` (
-  `postcode` varchar(255) NOT NULL,
-  `latitude` varchar(255) NOT NULL,
-  `longitude` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -132,6 +120,14 @@ CREATE TABLE IF NOT EXISTS `userlogin` (
   `InActive` char(1) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Userlogin details of registered users';
 
+
+--
+-- Dumping data for table `userlogin`
+--
+
+INSERT INTO `userlogin` (`Id`, `UserLoginName`, `Password`, `Type`, `InActive`) VALUES
+(1, 'admin@admin.com', 'admin', 'admin', 'Y');
+
 --
 -- Indexes for dumped tables
 --
@@ -174,7 +170,7 @@ ALTER TABLE `userlogin`
 -- AUTO_INCREMENT for table `donordetails`
 --
 ALTER TABLE `donordetails`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `hospitaldetails`
 --

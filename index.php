@@ -191,6 +191,17 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE CONSTANTS FILE
+ * --------------------------------------------------------------------
+ */
+$constants_file = 'includes/constants.php';
+if (file_exists($constants_file)) {
+    require_once($constants_file);
+}
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
