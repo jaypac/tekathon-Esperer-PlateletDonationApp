@@ -1,0 +1,9 @@
+a.link {
+	color: #7AB752
+}
+
+a.link:hover, a.link:focus {
+color: #619E39;
+}
+
+
