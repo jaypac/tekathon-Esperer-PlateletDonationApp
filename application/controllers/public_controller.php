@@ -21,10 +21,10 @@ class Public_controller extends MY_Controller {
     public function login(){
     	
      	$data=array();
-    	$this->add_view("content_body","Login", $data);
+    	$this->add_view("content_body","public/login", $data);
     	
     	//$this->add_view("content_body", "login", $data);
-    	$this->render("default");
+    	$this->render("public/default");
     	
     }
     
@@ -35,7 +35,7 @@ class Public_controller extends MY_Controller {
     	$this->add_view("content_body","registration", $data);
     	 
     	//$this->add_view("content_body", "login", $data);
-    	$this->render("default");
+    	$this->render("public/default");
     	 
     }
     
