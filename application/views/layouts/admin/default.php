@@ -19,28 +19,57 @@
 
 </head>
 <body>
-	<div class="row">
-		<div class="large-12 columns">
-			<h1>Top Bar</h1>
-		</div>	
-	</div>	
+	<div class="off-canvas-wrap" data-offcanvas>
+		<div class="inner-wrap">
 
-	<div class="row">
-		<div class="large-3 columns">
-			<ul class="side-nav" role="navigation" title="Link List">
-			   <li role="menuitem"><a href="#">Link 1</a></li>
-			   <li role="menuitem"><a href="/pda/ngo/newRequest">New Request</a></li>
-			   <li role="menuitem"><a href="#">Link 3</a></li>
-			   <li role="menuitem"><a href="#">Link 4</a></li>
-			 </ul>
-		</div>	
-		<div class="large-9 columns">
-			<div class="panel">
-				<!--Body Content -->
-        		<?php  if(isset($content_body))echo $content_body; ?>
+			 <nav class="tab-bar show-for-small">
+			      <section class="left-small">
+			        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+			      </section>
+
+			      <section class="middle tab-bar-section">
+			        <h1 class="title">Think Foundation</h1>
+			      </section>
+
+			 </nav>
+
+		    <!-- Off Canvas Menu -->
+		    <aside class="left-off-canvas-menu">
+		        <!-- whatever you want goes here -->
+		        <ul class="off-canvas-list">
+		          <li role="menuitem"><a href="/pda/ngo/newRequest">New Request</a></li>
+				   	<li role="menuitem"><a href="#">Link 2</a></li>
+				   	<li role="menuitem"><a href="#">Link 3</a></li>
+				   	<li role="menuitem"><a href="#">Link 4</a></li>
+		        </ul>
+		    </aside>
+
+		    <div class="row hide-for-small">
+				<div class="large-12 columns">
+					<h1>Top Bar</h1>
+				</div>	
+			</div>	
+
+			<div class="row" style="padding-top:10px;">
+				<div class="large-3 columns hide-for-small">
+					<ul class="side-nav" role="navigation" title="Link List">
+						<li role="menuitem"><a href="/pda/ngo/newRequest">New Request</a></li>
+					   	<li role="menuitem"><a href="#">Link 2</a></li>
+					   	<li role="menuitem"><a href="#">Link 3</a></li>
+					   	<li role="menuitem"><a href="#">Link 4</a></li>
+					</ul>
+				</div>	
+				<div class="large-9 columns">
+					<!--Body Content -->
+		        	<?php  if(isset($content_body))echo $content_body; ?>
+				</div>
 			</div>
-		</div>
-	</div>	
+
+			 <!-- close the off-canvas menu -->
+  			<a class="exit-off-canvas"></a>
+
+		</div>	
+	</div>		
         
 	<script src="/js/vendor/jquery.js"></script>
 	<script src="/js/foundation.min.js"></script>

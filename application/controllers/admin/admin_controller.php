@@ -23,6 +23,7 @@ class Admin_controller extends MY_Controller {
     public function dashboard() {
 
         $data = array();
+        $this->add_view("content_body", "welcome_message", $data);
         $this->render("admin/default");
     }
 
