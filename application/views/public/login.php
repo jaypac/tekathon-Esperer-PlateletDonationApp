@@ -8,7 +8,7 @@
 }
 </style>
 
-<div style="height:100%" class="login-background">
+<div style="height:100%" class="login login-background">
 	<div class="row large-collapse vertical-center" style="padding-top: 4em;">
 		<div class="large-6 large-centered columns">
 				<div class="row">
@@ -16,20 +16,26 @@
 					<div class="panel login-box-shadow" style="background-color: #ffffff">
 						<div class="row">
 							<div class="large-12 columns">
-								<span>Log in or </span> <span><a class="link" href="/pda/donorRegisration">register</a></span>
+								<span>Log in or </span> <span><a class="link" href="<?php echo site_url("pda/donorRegisration"); ?>">register</a></span>
 							</div>
 						</div>
-						<div class="row large-collapse">
+						<div class="row large-collapse" style="padding-top:10px;">
 							<div class="large-12 columns">
-								<form method="post" action="loginSuccessful">
+								<?php if(validation_errors() != null) : ?>
+									<div data-alert class="alert-box alert round">
+										<?php echo validation_errors(); ?>
+									</div>
+								<?php endif; ?>
+
+								<?php echo form_open('pda/do_login'); ?>
 									<div class="row">
 										<div class="large-12 columns">
-											<input type="email" name="loginName" id="loginName"placeholder="Enter email" />
+											<input type="email" name="email" id="email"placeholder="Enter email" />
 										</div>
 									</div>
 									<div class="row">
 										<div class="large-12 columns">
-											<input type="password" name="Password" id="Password" placeholder="Enter password" />
+											<input type="password" name="password" id="password" placeholder="Enter password" />
 										</div>
 									</div>
 									<div class="row">

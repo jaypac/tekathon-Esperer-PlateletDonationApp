@@ -29,6 +29,31 @@ class Public_controller extends MY_Controller {
     }
     
 
+    public function do_login(){
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $this->load->library('form_validation');
+            if ($this->form_validation->run('do_login') == FALSE)
+            {
+                $data=array();
+                $this->add_view("content_body","public/login", $data);
+                $this->render("public/default");
+            }
+            else
+            {
+                //$this->load->view('formsuccess');
+                echo "good";
+            }
+
+
+        }else{
+
+             redirect('/pda/login/', 'refresh');
+        }   
+
+    }
+
     public function donorRegisration(){
     	 
     	$data=array();
