@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `donationCenters` (
 `Id` int(11) NOT NULL,
   `Name` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
   `Address` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
+  `City` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `Pincode` int(11) NOT NULL 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Donation Centers';
 

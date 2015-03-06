@@ -29,6 +29,11 @@ $config = array(
                                             'field' => 'centerPincode',
                                             'label' => 'Center Pincode',
                                             'rules' => 'trim|required|check_valid_pincode'
+                                         ),
+                                    array(
+                                            'field' => 'centerCity',
+                                            'label' => 'Center City',
+                                            'rules' => 'trim|required'
                                          )
                                     )                          
                );

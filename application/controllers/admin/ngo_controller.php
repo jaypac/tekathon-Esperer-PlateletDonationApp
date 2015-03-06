@@ -19,12 +19,80 @@ class Ngo_controller extends MY_Controller {
 
     public function manage_donation_centers(){
 
-        $data = array();
         
+        $this->load->model('ngo_model','ngo');
+        $result_list = $this->ngo->get_donation_center();
+
+        $data = array('query' => $result_list);
+
         $this->add_view("content_body", "admin/manage_donation_centers", $data);
         $this->render("admin/default");
         
     }
+
+    public function edit_donation_center($center_id = ''){
+
+        $data = array();
+        
+        if(!isset($center_id) || empty($center_id)){
+            $this->show_404();
+        }
+
+        $this->load->model('ngo_model','ngo');
+        $result = $this->ngo->get_donation_center($center_id);
+
+        $data = array('Id' => $result->row()->Id,
+                        'Name' => $result->row()->Name,
+                        'Address' => $result->row()->Address,
+                        'City' => $result->row()->City,
+                        'Pincode' => $result->row()->Pincode
+                        );
+
+        $this->add_view("content_body", "admin/edit_donation_center", $data);
+        $this->render("admin/default");
+        
+    }
+
+    public function update_donation_center(){
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $this->load->library('form_validation');
+            if ($this->form_validation->run('save_donation_center') == FALSE)
+            {
+                $data=array();
+                $this->add_view("content_body","admin/edit_donation_center", $data);
+                $this->render("admin/default");
+            }
+            else
+            {
+
+                $input_params = array(
+                    'Name' => $this->input->get_post('centerName'),
+                    'Address' => $this->input->get_post('centerAddress'),
+                    'City' => $this->input->get_post('centerCity'),
+                    'Pincode' => $this->input->get_post('centerPincode')
+                );
+
+                $center_id = $this->input->get_post('centerId');
+
+                $this->load->model('ngo_model','ngo');
+                $result = $this->ngo->update_donation_center($center_id,$input_params);
+
+                $data=array(
+                    'success'=>'Success. The donation center has been updated.'
+                );
+                $this->add_view("content_body","admin/edit_donation_center", $data);
+                $this->render("admin/default");
+            }
+
+         }else{
+
+             redirect('/pda/ngo/manage-donation-center', 'refresh');
+        }  
+        
+    }
+
 
     public function save_donation_center(){
 
@@ -43,6 +111,7 @@ class Ngo_controller extends MY_Controller {
                 $input_params = array(
                     'Name' => $this->input->get_post('centerName'),
                     'Address' => $this->input->get_post('centerAddress'),
+                    'City' => $this->input->get_post('centerCity'),
                     'Pincode' => $this->input->get_post('centerPincode')
                 );
 

@@ -35,6 +35,11 @@
 		</div>
 		<div class="row">
 			<div class="large-6 columns">
+				<input type="text" name="centerCity" id="centerCity" value="<?php echo set_value('centerCity'); ?>" placeholder="Enter Center City" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
 				<input type="text" name="centerPincode" id="centerPincode" value="<?php echo set_value('centerPincode'); ?>" placeholder="Enter Center Pincode" />
 			</div>
 		</div>

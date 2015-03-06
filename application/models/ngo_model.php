@@ -16,6 +16,30 @@ class Ngo_model extends CI_Model {
 
 	}
 
+	public function update_donation_center($center_id, $input_params)
+	{
+		$this->load->database();
+		$this->db->where('id', $center_id);
+		$this->db->update('donationcenters', $input_params);
+
+	}
+
+	public function get_donation_center($center_id = '')
+	{
+		$this->load->database();
+
+		$query = array();
+		if(isset($center_id) && !empty($center_id)){
+			$sql = "SELECT Id,Name, City,Address,Pincode from donationcenters where Id = ?";
+			$query = $this->db->query($sql, array($center_id));
+		}else{
+			$sql = "SELECT Id,Name, City,Address,Pincode from donationcenters";
+			$query = $this->db->query($sql, array());
+		}
+
+		return $query;
+	}
+
 
 	public function get_donors()
 	{
