@@ -14,16 +14,21 @@ $config = array(
                                             'rules' => 'required|check_login_database'
                                          )
                                     ),
-                 'email' => array(
+                 'save_donation_center' => array(
                                     array(
-                                            'field' => 'emailaddress',
-                                            'label' => 'EmailAddress',
-                                            'rules' => 'required|valid_email'
+                                            'field' => 'centerName',
+                                            'label' => 'Center Name',
+                                            'rules' => 'trim|required'
                                          ),
                                     array(
-                                            'field' => 'name',
-                                            'label' => 'Name',
-                                            'rules' => 'required|alpha'
+                                            'field' => 'centerAddress',
+                                            'label' => 'Center Address',
+                                            'rules' => 'trim|required'
+                                         ),
+                                    array(
+                                            'field' => 'centerPincode',
+                                            'label' => 'Center Pincode',
+                                            'rules' => 'trim|required|check_valid_pincode'
                                          )
                                     )                          
                );

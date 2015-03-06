@@ -30,7 +30,7 @@
 								<?php echo form_open('pda/do_login'); ?>
 									<div class="row">
 										<div class="large-12 columns">
-											<input type="email" name="email" id="email"placeholder="Enter email" />
+											<input type="email" name="email" id="email" placeholder="Enter email" />
 										</div>
 									</div>
 									<div class="row">

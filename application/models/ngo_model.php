@@ -9,7 +9,14 @@ class Ngo_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	
+	public function save_donation_center($input_params)
+	{
+		$this->load->database();
+		$this->db->insert('DonationCenters', $input_params);
+
+	}
+
+
 	public function get_donors()
 	{
 		

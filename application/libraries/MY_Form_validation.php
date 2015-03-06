@@ -4,6 +4,12 @@ class MY_Form_validation extends CI_Form_validation{
           parent::__construct($config);
      }
 
+     public function clear_field_data() {
+
+        $this->_field_data = array();
+        return $this;
+    }
+
      function check_login_database($password){
 
      	$CI =& get_instance();
@@ -19,6 +25,16 @@ class MY_Form_validation extends CI_Form_validation{
      	}else{
  			return false;
      	}
+
+     }
+
+     function check_valid_pincode($pincode){
+
+          if(is_numeric($pincode)){
+              return true;
+          }else{
+               return false;
+          }
 
      }
 }
