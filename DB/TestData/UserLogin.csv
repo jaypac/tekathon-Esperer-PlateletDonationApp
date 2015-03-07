@@ -1,4 +1,4 @@
-Id,UserLoginName,Password,Type,InActive
+Id,UserLoginName,Password,Type,IsActive
 1,admin,admin,NGO,Y
 2,lilavati,lilavati,Hospital,Y
 3,mgm,mgm,Hospital,N

@@ -23,7 +23,7 @@ class MY_Form_validation extends CI_Form_validation{
      		return $is_valid_user;
 
      	}else{
- 			return false;
+ 			  return false;
      	}
 
      }
@@ -36,5 +36,21 @@ class MY_Form_validation extends CI_Form_validation{
                return false;
           }
 
+     }
+
+     function check_mand_donor_pincode($email){
+
+        $CI =& get_instance();
+        $off_pincode = $CI->input->post('officePincode','');
+        $res_pincode = $CI->input->post('residencePincode','');
+
+        $is_set_ofc_pin = (isset($off_pincode) && !empty($off_pincode));
+        $is_set_res_pin = (isset($res_pincode) && !empty($res_pincode));
+
+        if($is_set_ofc_pin || $is_set_res_pin){
+            return true;
+        }else{
+            return false;
+        } 
      }
 }

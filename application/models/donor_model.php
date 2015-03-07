@@ -8,6 +8,22 @@ class Donor_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
+
+	public function get_donors($donor_id = '')
+	{
+		$this->load->database();
+
+		$query = array();
+		if(isset($donor_id) && !empty($donor_id)){
+			$query = $this->db->get_where('donordetails', array('Id' => $donor_id));
+		}else{
+			$query = $this->db->get('donordetails');
+		}
+
+		return $query;
+	}
+
+
 	function savedonorDetails(){
 		
 		$data = array(
@@ -19,9 +35,6 @@ class Donor_model extends CI_Model {
 		);
 		
 		$this->db->insert('donordetails', $data);
-		
-		
-		
 	}
 	
 	function saveuserlogin(){
@@ -38,12 +51,8 @@ class Donor_model extends CI_Model {
 	function loginSuccessful(){
 		$userlogin = array($this->input->post('loginName') , $this->input->post('Password'));
 		
-		
-		
 		$sql = "SELECT Id,UserLoginName, Password FROM userlogin where UserLoginName = ? and Password =?";
 		$query = $this->db->query($sql, $userlogin);
-	//	$query = $this->db->query('SELECT UserLoginName, Password FROM userlogin where id like '%".$this->input->post()");
-		
 		return $query;
 		
 	}

@@ -16,6 +16,19 @@ class Ngo_model extends CI_Model {
 
 	}
 
+	public function save_donor($user_params, $donor_params)
+	{
+		$this->load->database();
+		$this->db->insert('UserLogin', $user_params);
+
+		$userLogin_id = $this->db->insert_id();
+		$donor_params['userlogin_id'] = $userLogin_id;
+
+		$this->db->insert('donordetails', $donor_params);
+
+	}
+
+
 	public function update_donation_center($center_id, $input_params)
 	{
 		$this->load->database();

@@ -17,9 +17,21 @@ class Ngo_controller extends MY_Controller {
         $this->render("welcome");
     }
 
+    public function manage_donors(){
+
+        $this->load->model('donor_model','donor');
+        $result_list = $this->donor->get_donors();
+
+        $data = array('query' => $result_list);
+
+        $this->add_view("content_body", "admin/manage_donors", $data);
+        $this->render("admin/default");
+        
+    }
+
+
     public function manage_donation_centers(){
 
-        
         $this->load->model('ngo_model','ngo');
         $result_list = $this->ngo->get_donation_center();
 
@@ -29,6 +41,7 @@ class Ngo_controller extends MY_Controller {
         $this->render("admin/default");
         
     }
+
 
     public function edit_donation_center($center_id = ''){
 
@@ -90,9 +103,7 @@ class Ngo_controller extends MY_Controller {
 
              redirect('/pda/ngo/manage-donation-center', 'refresh');
         }  
-        
     }
-
 
     public function save_donation_center(){
 
@@ -130,9 +141,64 @@ class Ngo_controller extends MY_Controller {
 
              redirect('/pda/ngo/add-donation-center', 'refresh');
         }      
+    }
 
+     public function save_donor(){
 
-        
+         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $this->load->library('form_validation');
+            if ($this->form_validation->run('save_donor') == FALSE)
+            {
+                $data=array();
+                $this->add_view("content_body","admin/add_donor", $data);
+                $this->add_view("content_footer", "admin/add_donor_ftr", $data);
+                $this->render("admin/default");
+            }
+            else
+            {
+
+                $user_params = array(
+                    'UserLoginName' => $this->input->get_post('email'),
+                    'Password' => $this->input->get_post('password'),
+                    'Type' => 'donor',
+                    'IsActive' => 'Y'
+                );
+
+                $donor_params = array(
+                    'FirstName' => $this->input->get_post('firstName'),
+                    'LastName' => $this->input->get_post('lastName'),
+                    'BirthDate' => $this->input->get_post('birthDate') ,
+                    'Gender' => $this->input->get_post('gender'),
+                    'BloodGroup' => $this->input->get_post('bloodGroup'),
+                    'OfficePincode' => $this->input->get_post('officePincode',''),
+                    'ResidencePincode' => $this->input->get_post('residencePincode',''),
+                    'LastDonatedDate' => date('Y-m-d'),
+                    'RequestSentCount' => 0,
+                    'PositiveResponseCount' => 0,
+                    'ActualDonationCount' => 0,
+                    'PositiveDonationRatio' => 0,
+                    'ActualDonationRatio' => 0,
+                    'MobileNumber' => $this->input->get_post('mobileNo'),
+                    'userlogin_id' => ''
+                );
+
+                $this->load->model('ngo_model','ngo');
+                $result = $this->ngo->save_donor($user_params, $donor_params);
+
+                $this->form_validation->clear_field_data();
+                $data=array(
+                    'success'=>'Success. New donor has been added.'
+                );
+                $this->add_view("content_body","admin/add_donor", $data);
+                $this->add_view("content_footer", "admin/add_donor_ftr", $data);
+                $this->render("admin/default");
+            }
+
+         }else{
+
+             redirect('/pda/ngo/add-donor', 'refresh');
+        }      
     }
 
     public function add_donation_center(){
@@ -140,6 +206,16 @@ class Ngo_controller extends MY_Controller {
         $data = array();
         
         $this->add_view("content_body", "admin/add_donation_center", $data);
+        $this->render("admin/default");
+        
+    }
+
+    public function add_donor(){
+
+        $data = array();
+        
+        $this->add_view("content_body", "admin/add_donor", $data);
+        $this->add_view("content_footer", "admin/add_donor_ftr", $data);
         $this->render("admin/default");
         
     }

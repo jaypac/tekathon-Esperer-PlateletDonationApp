@@ -84,6 +84,8 @@
 	<script src="/js/foundation.min.js"></script>
 	<script>
     	$(document).foundation();
-  </script>
+  	</script>
+
+  	<?php  if(isset($content_footer))echo $content_footer; ?>
 </body>
 </html>
