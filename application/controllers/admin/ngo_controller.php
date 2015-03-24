@@ -315,27 +315,34 @@ class Ngo_controller extends MY_Controller {
 
     	$data = array();
     	
-    	$this->add_view("content_body", "new_request", $data);
+        $this->load->model('ngo_model','ngo');
+        $center_list_query = $this->ngo->get_donation_center();
+
+        $data = array('center_list_query' => $center_list_query);
+
+    	$this->add_view("content_body", "admin/new_request", $data);
+        $this->add_view("content_footer", "admin/new_request_ftr", $data);
     	$this->render("admin/default");
     	
     }
     
-    public function getDonors(){
+    public function search_donors(){
     
     	$data = array();
     	 
     	$this->load->model('Ngo_model', 'ngo');
+    	$result = $this->ngo->search_donors();
+    	$center_list_query = $this->ngo->get_donation_center();
+
+
+		$data['query'] = $result['query'];
+		$data['center_list_query'] = $center_list_query;
+		$data['requestid'] = $result['requestId'];
+		$data['pincode'] =  $result['pincode'];
+		$data['bloodgrp'] =  $result['bloodgrp'];
+		$data['requestdate'] =  $result['requestdate'];
     	
-    	$kewl = $this->ngo->get_donors();
-    	
-		$data['query'] = $kewl['query'];
-		
-		$data['requestid'] = $kewl['requestId'];
-		$data['pincode'] = $this->input->get_post('pincode');
-		$data['bloodgrp'] = $this->input->get_post('bloodGroup');
-		$data['requestdate'] = $this->input->get_post('RequestDate');
-    	
-    	$this->add_view("content_body", "get_donors", $data);
+    	$this->add_view("content_body", "admin/get_donors", $data);
     	$this->render("admin/default");
     	 
     }

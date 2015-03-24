@@ -4,7 +4,7 @@
 
 	<a href="/pda/ngo/add-donor" class="button">Add Donor</a>
 
-	<table id="example" class="display" cellspacing="0" width="100%">
+	<table id="donors-table" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<th>First Name</th>
